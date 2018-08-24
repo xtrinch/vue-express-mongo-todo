@@ -1,16 +1,20 @@
 # vue-express-mongo-todo
 
-# Usage
+## See it in action
 
-## Frontend
+Visit http://vue-express-todo.trina.si/
+
+## Usage
+
+### Frontend
 
 - run `npm start` in `web`
 
-## Backend
+### Backend
 
 - run `npm start` in `server`
 
-## Components
+### Components
 
 - express
 - vue.js
