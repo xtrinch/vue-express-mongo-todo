@@ -11,9 +11,9 @@ services:
             - "mongodb"
         command: "npm run start:prod"
         ports: 
-            - "9000:9000"
+            - "8004:8004"
         environment:
             - NODE_ENV=production
-            - PORT=9000
+            - PORT=8004
             - MONGO_NAME=mongodb
 
