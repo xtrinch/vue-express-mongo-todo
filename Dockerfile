@@ -1,4 +1,4 @@
-FROM node:9.11.1 as builder
+FROM node:10.9.0 as builder
 WORKDIR /usr/app
 COPY . .
 WORKDIR /usr/app/frontend

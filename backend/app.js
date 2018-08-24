@@ -4,7 +4,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 var path = require('path');
 
-var Todo = require("./models/todo");
+var Todo = require("./models/Todo");
 
 const app = express()
 app.use(morgan('combined'))
@@ -17,7 +17,7 @@ if (env == 'production') {
 }
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/todos');
+mongoose.connect('mongodb://' + (process.env.MONGO_NAME || 'localhost') + ':27017/todos');
 var db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error"));
