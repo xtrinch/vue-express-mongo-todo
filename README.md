@@ -4,7 +4,7 @@
 
 Visit http://vue-express-todo.trina.si/
 
-## Usage
+## Usage in development
 
 ### Frontend
 
@@ -13,6 +13,14 @@ Visit http://vue-express-todo.trina.si/
 ### Backend
 
 - run `npm start` in `server`
+
+## Database
+
+- make sure you have mongodb installed and running at `localhost:27018`
+
+## Usage for production
+
+- run `docker-compose up -d`
 
 ### Components
 
