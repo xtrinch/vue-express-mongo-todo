@@ -20,3 +20,4 @@ Visit http://vue-express-todo.trina.si/
 - vue.js
 - bootstrap vue
 - vue router
+- docker for production setup
