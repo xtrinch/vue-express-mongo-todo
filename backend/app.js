@@ -2,13 +2,19 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+var path = require('path');
 
-var Todo = require("../models/todo");
+var Todo = require("./models/todo");
 
 const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
+
+var env = process.env.NODE_ENV || 'dev';
+if (env == 'production') {
+  app.use("/", express.static(path.join(path.dirname(__dirname), '/frontend/dist')))
+}
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/todos');
