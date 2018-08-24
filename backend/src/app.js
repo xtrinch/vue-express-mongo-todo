@@ -31,6 +31,8 @@ app.get('/todo/:id', (req, res) => {
 app.put('/todo/:id', (req, res) => {
   Todo.findById(req.params.id, 'title description', function (error, todo) {
     if (error) { console.error(error) }
+    todo.title = req.body.title
+    todo.description = req.body.description
     todo.save(function (error) {
       if (error) { console.log(error) }
       res.send({

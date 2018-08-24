@@ -19,6 +19,8 @@
         Add new todo
       </b-button>
     </div>
+    <router-view @changed="getTodos()" />
+
   </div>
 </template>
 

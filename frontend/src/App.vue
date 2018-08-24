@@ -6,7 +6,7 @@
         <b-nav-item :to="{ name: 'Todos' }">Todos</b-nav-item>
       </b-nav>
     </div>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 

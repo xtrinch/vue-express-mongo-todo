@@ -1,19 +1,20 @@
 
 <template>
-  <div class="posts">
-    <h1>Edit Todo</h1>
-      <div class="form">
-        <div>
-          <input type="text" name="title" placeholder="TITLE" v-model="title">
-        </div>
-        <div>
-          <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
-        </div>
-        <div>
-          <button class="app_post_btn" @click="updateTodo">Update</button>
-        </div>
+  <b-modal visible id="modal-center" centered title="Edit todo" @ok="save()" @hidden="hideModal()">
+    <div class="form">
+      <div>
+        <b-form-input v-model="title"
+          type="text"
+          placeholder="Title"></b-form-input>
       </div>
-  </div>
+      <div>
+        <b-form-textarea v-model="description"
+          type="text"
+          :rows="12"
+          placeholder="Description"></b-form-textarea>      
+      </div>
+    </div>
+  </b-modal>
 </template>
 
 <script>
@@ -38,11 +39,18 @@ export default {
       this.description = response.data.todo.description
     },
     async updateTodo () {
+      console.log(this.description)
       await TodoService.updateTodo({
         id: this.$route.params.id,
         title: this.title,
         description: this.description
       })
+    },
+    async save() {
+      await this.updateTodo();
+    },
+    hideModal () {
+      this.$emit('changed')
       this.$router.push({ name: 'Todos' })
     }
   }
@@ -50,7 +58,7 @@ export default {
 </script>
 <style type="text/css">
 .form input, .form textarea {
-  width: 500px;
+  width: 100%;
   padding: 10px;
   border: 1px solid #e0dede;
   outline: none;

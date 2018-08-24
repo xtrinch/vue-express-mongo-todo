@@ -18,17 +18,19 @@ export default new Router({
     {
       path: '/todos',
       name: 'Todos',
-      component: Todos
+      component: Todos,
+      children: [
+        {
+          path: '/todos/new',
+          name: 'NewTodo',
+          component: NewTodo
+        },
+        {
+          path: '/todos/:id',
+          name: 'EditTodo',
+          component: EditTodo
+        }
+      ]
     },
-    {
-      path: '/todos/new',
-      name: 'NewTodo',
-      component: NewTodo
-    },
-    {
-      path: '/todos/:id',
-      name: 'EditTodo',
-      component: EditTodo
-    }
   ]
 })

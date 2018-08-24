@@ -1,18 +1,19 @@
 <template>
-  <div class="posts">
-    <h1>Add Post</h1>
-      <div class="form">
-        <div>
-          <input type="text" name="title" placeholder="TITLE" v-model="title">
-        </div>
-        <div>
-          <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
-        </div>
-        <div>
-          <button class="app_post_btn" @click="addTodo">Add</button>
-        </div>
+  <b-modal visible id="modal-center" centered title="New todo" @hidden="hideModal()" @ok="save()">
+    <div class="form">
+      <div>
+        <b-form-input v-model="title"
+          type="text"
+          placeholder="Title"></b-form-input>
       </div>
-  </div>
+      <div>
+        <b-form-textarea v-model="description"
+          type="text"
+          :rows="12"
+          placeholder="Description"></b-form-textarea>      
+      </div>
+    </div>
+  </b-modal>
 </template>
 
 <script>
@@ -31,6 +32,13 @@ export default {
         title: this.title,
         description: this.description
       })
+    },
+    async save() {
+      await this.addTodo();
+      this.hideModal();
+    },
+    hideModal () {
+      this.$emit('changed')
       this.$router.push({ name: 'Todos' })
     }
   }
@@ -38,7 +46,7 @@ export default {
 </script>
 <style type="text/css">
 .form input, .form textarea {
-  width: 500px;
+  width: 100%;
   padding: 10px;
   border: 1px solid #e0dede;
   outline: none;
