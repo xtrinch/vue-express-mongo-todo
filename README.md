@@ -14,7 +14,7 @@ Visit http://vue-express-todo.trina.si/
 
 - run `npm start` in `server`
 
-## Database
+### Database
 
 - make sure you have mongodb installed and running at `localhost:27018`
 
