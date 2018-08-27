@@ -28,8 +28,9 @@ Demonstrates the use of API services, routing with vue-router, using bootstrap-v
 
 ### Components
 
-- express
-- vue.js
-- bootstrap vue
-- vue router
+- express - backend and data provider
+- vue.js - frontend framework
+- bootstrap vue - frontend design framework
+- vue router - frontend router
+- axios - a vue HTTP client
 - docker for production setup
