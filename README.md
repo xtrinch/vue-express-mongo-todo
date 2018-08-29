@@ -6,7 +6,7 @@ Visit http://vue-express-todo.trina.si/
 
 ## About
 
-Demonstrates the use of API services, routing with vue-router, using bootstrap-vue for easier design, ...
+Demonstrates the use of API services, routing with vue-router, state management with vuex, using bootstrap-vue for easier design, ...
 
 ## Usage in development
 
