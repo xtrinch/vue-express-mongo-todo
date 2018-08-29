@@ -30,6 +30,7 @@ Demonstrates the use of API services, routing with vue-router, using bootstrap-v
 
 - express - backend and data provider
 - vue.js - frontend framework
+- vuex - state management for vue.js
 - bootstrap vue - frontend design framework
 - vue router - frontend router
 - axios - a vue HTTP client
