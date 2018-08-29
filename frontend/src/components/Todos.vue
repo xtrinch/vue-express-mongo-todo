@@ -13,6 +13,8 @@
         </b-button>
       </template>
     </b-table>
+    <b-pagination size="sm" :total-rows="rows" v-model="page" :per-page="perpage">
+    </b-pagination>
     <div class="add-todo">
       <b-button size="sm" @click.stop="$router.push({ name: 'NewTodo' })" class="mr-1">
         Add new todo
@@ -32,14 +34,32 @@ export default {
   methods: {
     async deleteTodo(id) {
       await this.$store.dispatch('deleteTodo', id)
-    }
+    },
   },
   computed: {
     todos: {
       get () {
         return this.$store.state.Todos.todos
       }
-    }
+    },
+    page: {
+      get () {
+        return this.$store.state.Todos.page
+      },
+      async set(page) {
+        await this.$store.dispatch('updatePage', page)
+      }
+    },
+    perpage: {
+      get() {
+        return this.$store.state.Todos.perpage
+      }
+    },
+    rows: {
+      get() {
+        return this.$store.state.Todos.rows
+      }
+    },
   },
 }
 </script>

@@ -11,6 +11,8 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
+const PAGE_SIZE = 10;
+
 var env = process.env.NODE_ENV || 'dev';
 if (env == 'production') {
   app.use("/", express.static(path.join(path.dirname(__dirname), '/frontend/dist')))
@@ -60,10 +62,15 @@ app.delete('/todo/:id', (req, res) => {
 })
 
 app.get('/todos', (req, res) => {
-  Todo.find({}, 'title description', function (error, todos) {
-    if (error) { console.error(error); }
-    res.send({
-      todos: todos
+  console.log(req)
+  Todo.find({}, 'title description', { skip: (req.query.page - 1)*PAGE_SIZE, limit: PAGE_SIZE }, function (error, todos) {
+    Todo.count({}, function(err, count) {
+      if (error) { console.error(error); }
+      res.send({
+        todos: todos,
+        rows: count,
+        perpage: PAGE_SIZE
+      })
     })
   }).sort({_id:-1})
 })
