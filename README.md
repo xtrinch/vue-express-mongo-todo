@@ -6,7 +6,12 @@ Visit http://vue-express-todo.trina.si/
 
 ## About
 
-Demonstrates the use of API services, routing with vue-router, state management with vuex, using bootstrap-vue for easier design, ...
+Demonstrates:
+- the use of API services with axios
+- routing with vue-router
+- state management with vuex
+- using bootstrap-vue for easier design
+- production deployment with docker
 
 ## Usage in development
 
