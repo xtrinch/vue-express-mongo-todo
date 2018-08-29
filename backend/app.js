@@ -42,7 +42,7 @@ app.put('/todo/:id', (req, res) => {
     todo.save(function (error) {
       if (error) { console.log(error) }
       res.send({
-        success: true
+        todo: todo
       })
     })
   })

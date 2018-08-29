@@ -13,40 +13,34 @@
         </b-button>
       </template>
     </b-table>
-
     <div class="add-todo">
       <b-button size="sm" @click.stop="$router.push({ name: 'NewTodo' })" class="mr-1">
         Add new todo
       </b-button>
     </div>
-    <router-view @changed="getTodos()" />
+    <router-view />
 
   </div>
 </template>
 
 <script>
-import TodoService from '@/services/TodoService'
 export default {
   name: 'todos',
-  data () {
-    return {
-      todos: []
-    }
-  },
-  mounted () {
-    this.getTodos()
+  async created () {
+    await this.$store.dispatch('getTodos')
   },
   methods: {
-    async getTodos () {
-      const response = await TodoService.fetchTodos()
-      console.log(response.data);
-      this.todos = response.data.todos
-    },
-    async deleteTodo (id) {
-      await TodoService.deleteTodo(id)
-      this.getTodos();
+    async deleteTodo(id) {
+      await this.$store.dispatch('deleteTodo', id)
     }
-  }
+  },
+  computed: {
+    todos: {
+      get () {
+        return this.$store.state.Todos.todos
+      }
+    }
+  },
 }
 </script>
 

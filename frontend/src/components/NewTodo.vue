@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import TodoService from '@/services/TodoService'
 export default {
   name: 'NewTodo',
   data () {
@@ -28,17 +27,15 @@ export default {
   },
   methods: {
     async addTodo () {
-      await TodoService.addTodo({
+      await this.$store.dispatch('addTodo', {
         title: this.title,
         description: this.description
       })
     },
     async save() {
       await this.addTodo();
-      this.hideModal();
     },
     hideModal () {
-      this.$emit('changed')
       this.$router.push({ name: 'Todos' })
     }
   }
