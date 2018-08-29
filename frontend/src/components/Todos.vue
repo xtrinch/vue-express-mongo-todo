@@ -1,7 +1,7 @@
 <template>
   <div class="posts">
     <h1>Todos</h1>
-    <b-table responsive outlined small striped hover :items="todos" :fields="['title', 'description', 'edit', 'delete']">
+    <b-table responsive outlined small striped hover :items="data.todos" :fields="['title', 'description', 'edit', 'delete']">
       <template slot="edit" slot-scope="row">
         <b-button size="sm" @click.stop="$router.push({ name: 'EditTodo', params: { id: row.item._id } })" class="mr-1">
           Edit
@@ -13,7 +13,7 @@
         </b-button>
       </template>
     </b-table>
-    <b-pagination size="sm" :total-rows="rows" v-model="page" :per-page="perpage">
+    <b-pagination size="sm" :total-rows="data.rows" v-model="page" :per-page="data.perpage">
     </b-pagination>
     <div class="add-todo">
       <b-button size="sm" @click.stop="$router.push({ name: 'NewTodo' })" class="mr-1">
@@ -37,9 +37,9 @@ export default {
     },
   },
   computed: {
-    todos: {
+    data: {
       get () {
-        return this.$store.state.Todos.todos
+        return this.$store.state.Todos
       }
     },
     page: {
@@ -48,16 +48,6 @@ export default {
       },
       async set(page) {
         await this.$store.dispatch('updatePage', page)
-      }
-    },
-    perpage: {
-      get() {
-        return this.$store.state.Todos.perpage
-      }
-    },
-    rows: {
-      get() {
-        return this.$store.state.Todos.rows
       }
     },
   },
