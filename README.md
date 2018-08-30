@@ -17,11 +17,11 @@ Demonstrates:
 
 ### Frontend
 
-- run `npm start` in `web`
+- run `npm start` in `backend`
 
 ### Backend
 
-- run `npm start` in `server`
+- run `npm start` in `frontend`
 
 ### Database
 
